@@ -1,0 +1,5 @@
+package jsp.usermanagement.model;
+
+public class User {
+
+}

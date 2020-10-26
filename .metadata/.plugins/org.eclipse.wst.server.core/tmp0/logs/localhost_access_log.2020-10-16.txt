@@ -1,0 +1,6 @@
+127.0.0.1 - - [16/Oct/2020:00:01:28 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [16/Oct/2020:00:01:35 +0530] "GET /OnlineEventManagementSystem/list HTTP/1.1" 200 2287
+0:0:0:0:0:0:0:1 - - [16/Oct/2020:00:01:39 +0530] "GET /OnlineEventManagementSystem/edit?idnumber=1 HTTP/1.1" 200 2422
+0:0:0:0:0:0:0:1 - - [16/Oct/2020:00:01:42 +0530] "POST /OnlineEventManagementSystem/update HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/Oct/2020:00:01:42 +0530] "GET /OnlineEventManagementSystem/list HTTP/1.1" 200 2290
+0:0:0:0:0:0:0:1 - - [16/Oct/2020:00:17:18 +0530] "GET /OnlineEventManagementSystem/edit?idnumber=4 HTTP/1.1" 200 2472

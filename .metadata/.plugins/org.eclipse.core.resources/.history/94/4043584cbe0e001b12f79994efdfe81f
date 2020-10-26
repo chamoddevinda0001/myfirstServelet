@@ -1,0 +1,97 @@
+package jsp.usermanagement.web;
+
+import java.io.IOException;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import jsp.usermanagement.dao.UsersDAO;
+import jsp.usermanagement.model.User;
+
+/**
+ * Servlet implementation class UserServerlet
+ */
+@WebServlet("/")
+public class UserServerlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    private UsersDAO userdao ;
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UserServerlet() {
+        this.userdao= new UsersDAO();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		String Action = request.getServletPath();
+		
+		switch (Action) {
+			case "/new":
+				showNewForm(request, response);
+			break;
+			
+			case "/insert":
+				insertUser(request,response;)
+				break;
+				
+			case "/delete":
+				break;
+				
+			case "/edit":
+				break;
+				
+			case "/update":
+				break;
+
+		default:
+			break;
+		}
+		
+	}
+
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		dispatcher.forward(request, response);
+		
+	}
+	
+	
+	private void insertUser(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+		
+		 int idnumber 		= Integer.parseInt(request.getParameter("idnumber"));
+		 String username	= request.getParameter("username");
+		 String	password	= request.getParameter("password");
+		 String email		= request.getParameter("email");
+		 String contactno	= request.getParameter("contactno");
+		 String occupation	= request.getParameter("occupation");
+		 String address		= request.getParameter("address");
+         String country 	= request.getParameter("country");
+		 String create_time = request.getParameter("create_time");
+		 
+		 User user = new User( idnumber, username, password, email, contactno, occupation,address, country,create_time);
+		 userdao.insertUser(user);
+		 response.sendRedirect("list");
+	}
+	
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		this.doGet(request, response);
+	}
+
+}

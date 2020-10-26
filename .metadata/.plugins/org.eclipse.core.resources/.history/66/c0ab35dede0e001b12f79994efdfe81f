@@ -1,0 +1,197 @@
+package jsp.usermanagement.dao;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import jsp.usermanagement.model.User;
+
+//this DAO calss provide CRUD operations for the users table in the database
+public class UsersDAO {
+
+	private String jdbcURL = "jdbc:mysql://localhost:3306/onlinemanagementsystem?useSSL=false";
+	private String jdbcUsername = "root";
+	private String jdbcPassword = "root";
+	
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (idnumber,username,password,email,contactno,occupation,address) VALUES "
+			+ " (?, ?, ?, ?, ?, ?, ?);";
+	
+	private static String SELECT_USER_BY_ID ="select idnumber,username,password,email,contactno,occupation,address from users where id = ?";
+	private static String SELECT_ALL_USERS ="select * from users ";
+	private static String DELETE_USERS_SQL ="delete from users where id=?";
+	private static String UPDATE_USER ="update users set username=? ,password=? ,email=? ,contactno=? ,occupation=? ,address=? where id = ?";
+	
+	
+	protected Connection getConnection() {
+		Connection connection = null;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+		} catch ( SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		
+		}catch ( ClassNotFoundException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		
+		return connection;
+	}
+	
+	
+	// Create a new user
+	public void insertUser(User user){
+		
+		try(Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER)){
+			
+			preparedStatement.setInt(1, user.getIdnumber());
+			preparedStatement.setString(2, user.getUsername());
+			preparedStatement.setString(3, user.getPassword());
+			preparedStatement.setString(4, user.getEmail());
+			preparedStatement.setString(5, user.getContactno());
+			preparedStatement.setString(6, user.getOccupation());
+			preparedStatement.setString(7, user.getAddress());
+			preparedStatement.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	// Update User
+public void updateUser(User user) {
+		
+	boolean rowUpdated;
+		try(Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER)){
+			
+			preparedStatement.setInt(1, user.getIdnumber());
+			preparedStatement.setString(2, user.getUsername());
+			preparedStatement.setString(3, user.getPassword());
+			preparedStatement.setString(4, user.getEmail());
+			preparedStatement.setString(5, user.getContactno());
+			preparedStatement.setString(6, user.getOccupation());
+			preparedStatement.setString(7, user.getAddress());
+			preparedStatement.setString(8, user.getCountry());
+			rowUpdated = preparedStatement.executeUpdate() > 0;
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+
+
+
+	// Select user by id
+	public User selectUserByID(int id) {
+		User user = null;
+		
+		// Step 1: Establishing Connection
+		try(Connection connection = getConnection();
+			
+			// Step 2: prepare statement using connection object
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);){
+				
+			preparedStatement.setInt(1, id);
+			System.out.print(preparedStatement);
+			
+			// Step 3: Execute the query
+			ResultSet rs= preparedStatement.executeQuery();
+			
+			// Step 4: Process the result set
+			
+			while(rs.next()) {
+				
+				 int idnumber 		= rs.getInt("idnumber");
+				 String username	= rs.getString("username"),
+						 password	= rs.getString("password"),
+						 email		= rs.getString("email"),
+						 contactno	= rs.getString("contactno"),
+						 occupation	= rs.getString("occupation"),
+						 address	= rs.getString("address"),
+						 country 	= rs.getString("country"),
+				 		
+				 user = new User(username, password, email, contactno, occupation, address, country);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return user;
+	}
+
+	
+	
+	// Select all users
+	public List<User> selectAllUser() {
+		List<User> users = new ArrayList<>();
+		
+		// Step 1: Establishing Connection
+		try(Connection connection = getConnection();
+			
+			// Step 2: prepare statement using connection object
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);){
+				
+			System.out.print(preparedStatement);
+			
+			// Step 3: Execute the query
+			ResultSet rs= preparedStatement.executeQuery();
+			
+			// Step 4: Process the result set
+			
+			while(rs.next()) {
+				
+				 int idnumber 	= rs.getInt("idnumber");
+				 String  username	= rs.getString("username"),
+						 password	= rs.getString("password"),
+						 email		= rs.getString("email"),
+						 contactno	= rs.getString("contactno"),
+						 occupation	= rs.getString("occupation"),
+						 address	= rs.getString("address"),
+						 country 	= rs.getString("country"),
+				 		
+				 users.add(new User(idnumber,username, password, email, contactno, occupation, address, country)) ;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return users;
+	}
+
+	
+	
+	// Delete user
+public boolean deleteUser(int user) {
+	
+	boolean rowDeleted = false;
+		
+		try(Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL)){
+			
+			preparedStatement.setInt(1, user);
+			
+			rowDeleted = preparedStatement.executeUpdate() > 0 ;
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return rowDeleted;
+	}
+
+
+}

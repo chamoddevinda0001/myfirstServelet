@@ -1,0 +1,14 @@
+127.0.0.1 - - [17/Oct/2020:13:34:57 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:13:35:02 +0530] "GET /OnlineEventManagementSystem/ HTTP/1.1" 500 1470
+127.0.0.1 - - [17/Oct/2020:13:36:26 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:13:36:55 +0530] "GET /OnlineEventManagementSystem/ HTTP/1.1" 500 1470
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:13:40:27 +0530] "GET /OnlineEventManagementSystem/ HTTP/1.1" 500 1470
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:13:41:52 +0530] "GET /OnlineEventManagementSystem/ HTTP/1.1" 500 1470
+127.0.0.1 - - [17/Oct/2020:13:46:13 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:13:46:18 +0530] "GET /OnlineEventManagementSystem/ HTTP/1.1" 500 1470
+127.0.0.1 - - [17/Oct/2020:14:26:29 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:14:26:32 +0530] "GET /OnlineEventManagementSystem/ HTTP/1.1" 200 2290
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:14:27:18 +0530] "GET /OnlineEventManagementSystem/edit?idnumber=1 HTTP/1.1" 200 2425
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:15:25:49 +0530] "GET /OnlineEventManagementSystem/list HTTP/1.1" 200 2290
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:15:25:52 +0530] "GET /OnlineEventManagementSystem/edit?idnumber=1 HTTP/1.1" 200 2425
+0:0:0:0:0:0:0:1 - - [17/Oct/2020:15:25:54 +0530] "GET /OnlineEventManagementSystem/list HTTP/1.1" 200 2290

@@ -1,0 +1,103 @@
+package jsp.usermanagement.model;
+
+public class User {
+
+	private int idnumber;
+	private String username;
+	private String password;
+	private String email;
+	private String contactno;
+	private String occupation;
+	private String Address;
+	private String country;
+	private String create_time;
+	/*
+	 * Constructor that accept all the parameters
+	 * */
+	public User(int idnumber, String username, String password, String email, String contactno, String occupation,
+			String address, String country,String create_time) {
+		super();
+		this.idnumber = idnumber;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.contactno = contactno;
+		this.occupation = occupation;
+		this.Address = address;
+		this.country = country;
+		this.create_time = create_time;
+	}
+	
+	
+	
+	/*
+	 * Constructor that accept all the parameters except 'idnumber' 
+	 * */
+	public User(String username, String password, String email, String contactno, String occupation, String address,
+			String country,String create_time) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.contactno = contactno;
+		this.occupation = occupation;
+		this.Address = address;
+		this.country = country;
+		this.create_time = create_time;
+	}
+
+
+
+
+	public int getIdnumber() {
+		return idnumber;
+	}
+	public void setIdnumber(int idnumber) {
+		this.idnumber = idnumber;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getContactno() {
+		return contactno;
+	}
+	public void setContactno(String contactno) {
+		this.contactno = contactno;
+	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String create_time() {
+		return country;
+	}
+}
