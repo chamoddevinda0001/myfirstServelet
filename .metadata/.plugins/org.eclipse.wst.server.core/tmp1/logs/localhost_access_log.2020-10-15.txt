@@ -1,0 +1,4 @@
+127.0.0.1 - - [15/Oct/2020:19:51:28 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [15/Oct/2020:19:51:31 +0530] "GET /jsp-servlet-jdbc-mysql-crud-tutorial-master/ HTTP/1.1" 500 317
+0:0:0:0:0:0:0:1 - - [15/Oct/2020:19:51:36 +0530] "GET /jsp-servlet-jdbc-mysql-crud-tutorial-master/ HTTP/1.1" 500 317
+0:0:0:0:0:0:0:1 - - [15/Oct/2020:19:51:40 +0530] "GET /jsp-servlet-jdbc-mysql-crud-tutorial-master/ HTTP/1.1" 500 317
